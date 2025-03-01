@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
-const User = require('../models/userModel'); // Assicurati che il percorso sia corretto
+const User = require('../models/userModel');
 const router = express.Router();
 
 // Rotta di registrazione
