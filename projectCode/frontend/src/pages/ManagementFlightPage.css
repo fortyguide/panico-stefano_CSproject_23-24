@@ -1,0 +1,92 @@
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 700px; 
+}
+
+.popup-content h2 {
+  margin-top: 0;
+}
+
+.popup-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.popup-content label {
+  font-weight: bold;
+}
+
+.popup-content input {
+  padding: 10px;
+  width: 100%;
+  max-width: 300px; 
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.popup-content .readonly-input {
+  background-color: #d3d3d3;
+  pointer-events: none;
+}
+
+.popup-content .seats-container {
+  display: flex;
+  align-items: center;
+}
+
+.popup-content .seats-container input {
+  margin-right: 10px;
+}
+
+.popup-content .seats-container .increase-btn {
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.popup-content button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  align-self: flex-start;
+}
+
+.popup-content .cancel-btn {
+  background-color: #dc3545;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.action-buttons .edit-btn {
+  background-color: yellow;
+  color: black;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+.action-buttons .delete-btn {
+  background-color: red;
+  color: white;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}

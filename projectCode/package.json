@@ -1,0 +1,10 @@
+{
+  "name": "app_aerei",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npx concurrently \"npx npm run start --prefix frontend\" \"npx npm run start --prefix backend\""
+  },
+  "dependencies": {
+    "concurrently": "^7.0.0"
+  }
+}

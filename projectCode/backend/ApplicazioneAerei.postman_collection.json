@@ -1,0 +1,389 @@
+{
+	"info": {
+		"_postman_id": "0aede8c3-6579-40b4-aabc-a23f2da38bb3",
+		"name": "ApplicazioneAerei",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "24547350"
+	},
+	"item": [
+		{
+			"name": "Registrazione",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"email\": \"marcorossi@gmail.com\",\r\n\"password\": \"password123\",\r\n\"name\": \"marco\",\r\n\"surname\": \"rossi\",\r\n\"role\": \"user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:3000/api/auth/register"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": ""
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"email\": \"marcorossi@gmail.com\",\r\n\"password\": \"password234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:3000/api/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Acquisto biglietto",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcxMDQ3MTd9.95xPKN57ZVO2f937BElo_IUdLAKCZg0NoxL0qpbn16s"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"flightNumber\": \"AA126\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:3000/api/ticket/purchase"
+			},
+			"response": []
+		},
+		{
+			"name": "Cancellazione biglietto",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcxMDQ2MDB9.vyMHZdgCrpCiUlV3D6dwea9fd_bzHkM7B_j_u4rs8iE"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:3000/api/ticket/cancel/4"
+			},
+			"response": []
+		},
+		{
+			"name": "Check in biglietto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:3000/api/ticket/checkin/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Creazione volo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"flightNumber\": \"AA127\",\r\n  \"departureTime\": \"2024-09-25T08:00:00Z\",\r\n  \"arrivalTime\": \"2024-09-25T12:00:00Z\",\r\n  \"destination\": \"Londra\",\r\n  \"availableSeats\": 50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:3000/api/flight/flights"
+			},
+			"response": []
+		},
+		{
+			"name": "Visualizzazione di tutti i voli",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"flightNumber\": \"AA124\",\r\n  \"departureTime\": \"2024-09-25T08:00:00Z\",\r\n  \"arrivalTime\": \"2024-09-25T12:00:00Z\",\r\n  \"destination\": \"New York\",\r\n  \"availableSeats\": 50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:3000/api/auth/logout"
+			},
+			"response": []
+		},
+		{
+			"name": "Visualizzazione volo specifico",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"flightNumber\": \"AA124\",\r\n  \"departureTime\": \"2024-09-25T08:00:00Z\",\r\n  \"arrivalTime\": \"2024-09-25T12:00:00Z\",\r\n  \"destination\": \"New York\",\r\n  \"availableSeats\": 50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:3000/api/flight/search",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"flight",
+						"search"
+					],
+					"query": [
+						{
+							"key": "flightNumber",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "availableSeats",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "departureTime",
+							"value": "2024-09-25T08:00:00.000Z",
+							"disabled": true
+						},
+						{
+							"key": "availableSeats",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Aggiornamento volo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"flightNumber\": \"PIPPO\",\r\n  \"departureTime\": \"2024-09-25T08:00:00Z\",\r\n  \"arrivalTime\": \"2024-09-25T12:00:00Z\",\r\n  \"destination\": \"New York\",\r\n  \"availableSeats\": 50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:3000/api/flight/flights/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Creazione volo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"flightNumber\": \"PIPPO\",\r\n  \"departureTime\": \"2024-09-25T08:00:00Z\",\r\n  \"arrivalTime\": \"2024-09-25T12:00:00Z\",\r\n  \"destination\": \"New York\",\r\n  \"availableSeats\": 50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:3000/api/flight/flights/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Visualizzazione profilo utente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://localhost:3000/api/auth/profile"
+			},
+			"response": []
+		},
+		{
+			"name": "Aggiornamento profilo utente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"marco\",\r\n\"surname\": \"bianchi\",\r\n\"email\": \"marcorossi@gmail.com\",\r\n\"password\": \"password123\",\r\n\"newPassword\": \"password234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:3000/api/auth/profile/edit"
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "https://localhost:3000/api/auth/logout"
+			},
+			"response": []
+		},
+		{
+			"name": "Monitoraggio eventi biglietto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:3000/api/ticket/monitoring?operation=cancellazione",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"ticket",
+						"monitoring"
+					],
+					"query": [
+						{
+							"key": "flightNumber",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "operation",
+							"value": "cancellazione"
+						},
+						{
+							"key": "departureTime",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Monitoraggio eventi biglietto",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:3000/api/ticket/monitoring?operation=cancellazione",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"ticket",
+								"monitoring"
+							],
+							"query": [
+								{
+									"key": "flightNumber",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "operation",
+									"value": "cancellazione"
+								},
+								{
+									"key": "departureTime",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}
