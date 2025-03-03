@@ -10,6 +10,7 @@ const AddFlightPage = () => {
   const [destination, setDestination] = useState('');
   const [availableSeats, setAvailableSeats] = useState('');
   const [message, setMessage] = useState('');
+  const [messageType, setMessageType] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -17,6 +18,7 @@ const AddFlightPage = () => {
 
     if (new Date(departureTime) >= new Date(arrivalTime)) {
       setMessage('Errore: L\'orario di partenza deve essere precedente all\'orario di arrivo.');
+      setMessageType('error');
       return;
     }
 
@@ -29,15 +31,17 @@ const AddFlightPage = () => {
         availableSeats,
       });
       setMessage(response.message);
+      setMessageType('success');
       setTimeout(() => {
         navigate('/');
       }, 2000);
     } catch (error) {
       if (error.response.status === 500) {
-        setMessage('Il volo esiste già.');
+        setMessage('Errore: Il volo esiste già.');
       } else {
         setMessage('Errore durante la creazione del volo. Riprova più tardi.');
       }
+      setMessageType('error');
     }
   };
 
@@ -48,8 +52,8 @@ const AddFlightPage = () => {
 
   return (
     <div className="add-flight-page">
-      <h1>Aggiungi un nuovo volo</h1>
       <form onSubmit={handleSubmit}>
+        <h1>Aggiungi un nuovo volo</h1>
         <div>
           <label htmlFor="flightNumber">Numero Volo:</label>
           <input
@@ -104,7 +108,7 @@ const AddFlightPage = () => {
         </div>
         <button type="submit">Aggiungi Volo</button>
       </form>
-      {message && <p className="message">{message}</p>}
+      {message && <p className={`message ${messageType}`}>{message}</p>}
     </div>
   );
 };
