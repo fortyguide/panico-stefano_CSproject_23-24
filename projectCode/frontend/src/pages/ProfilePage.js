@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import authService from '../services/authService';
 import eyeOpenIcon from '../assets/eye-open.png';
 import eyeClosedIcon from '../assets/eye-closed.png';
@@ -9,6 +10,8 @@ const ProfilePage = () => {
   const [message, setMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
+  const [countdown, setCountdown] = useState(5);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -23,6 +26,19 @@ const ProfilePage = () => {
     fetchProfile();
   }, []);
 
+  useEffect(() => {
+    if (countdown === 0) {
+      navigate('/');
+    }
+    if (countdown > 0 && message.includes('Profilo aggiornato con successo')) {
+      const timer = setTimeout(() => {
+        setCountdown(countdown - 1);
+        setMessage(`Profilo aggiornato con successo. Reindirizzamento alla home in ${countdown - 1} secondi...`);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [countdown, message, navigate]);
+
   const handleChange = (e) => {
     setProfile({
       ...profile,
@@ -34,7 +50,8 @@ const ProfilePage = () => {
     e.preventDefault();
     try {
       await authService.updateProfile(profile);
-      setMessage('Profilo aggiornato con successo.');
+      setMessage(`Profilo aggiornato con successo. Reindirizzamento alla home in ${countdown} secondi...`);
+      setCountdown(5);
     } catch (error) {
       const errorMsg = error.response?.data?.message || "Errore durante l'aggiornamento del profilo.";
       setMessage(errorMsg);
